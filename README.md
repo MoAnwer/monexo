@@ -1,12 +1,12 @@
-# Monexo API doc
+# Monexo API doc 
 
 ---
-
-# Global rules:
+This Readme doc is explain how the back-end of the financial web app [Monexo](https://github.com/Mohayyad-Muawia/monexo) is work.
+# 📌 Global rules:
 
 ## How to send resquest ?
 
-after success login or new register actions api with generate access_token like :
+after success login or new register actions api with generate `access_token` like :
 
 ```json
 {
@@ -15,12 +15,16 @@ after success login or new register actions api with generate access_token like 
 }
 ```
 
-try to save it in `localStorage` or `cookie` to use if with your requests, **every request** must be send with headers:
+try to save it in `localStorage` or `cookie` to use it with your requests, **every request** must be send with headers:
 
 - `Accept` : **only** must be `application/json`
 - `Authorization` : contains `Bearer <token>`
 
-> Warning: this headers are important friend **every request** must contains them
+> [!WARNING]  
+> this headers are vary important, **every request** must contains them to success.
+
+
+##### Front end request example: 
 
 ```js
 const axios = require("axios");
@@ -45,9 +49,7 @@ axios
   });
 ```
 
----
-
-## Success response formate:
+### 1- Success response formate:
 
 ```json
 {
@@ -59,7 +61,7 @@ axios
 }
 ```
 
-## failed response for all endpoints:
+### 2- failed response for all endpoints:
 
 ```json
 {
@@ -69,9 +71,10 @@ axios
 }
 ```
 
-> NOTE : Every failed resonse will be like this.
+> [!NOTE] 
+>  Every failed resonse will be like this.
 
-## if user is not logged with return response:
+### 3- if user is not logged , will return response:
 
 ```json
 {
@@ -79,21 +82,22 @@ axios
   "message": "Unauthenticate action !"
 }
 ```
+---
+
+# ✳️ API endpoints 
 
 ---
 
-# API endpoints
+### Login endpoint
 
----
-
-## Login endpoint: `POST: /api/login` :
-
+1- `POST: /api/login` 
+2- `POST: /api/logout`
 ##### Request data expected:
 
     - email (string, email)
     - password (string)
 
-#### Success response `/api/logint`:
+#### Success response `/api/login`:
 
 ```json
 {
@@ -137,7 +141,7 @@ axios
 
 1- `GET: /api/stats/day/{day?}` // e.g `/api/stats/day/2024-12-26`
 
-### Success response for `/api/stats/day/{day?}`:
+##### Success response for `/api/stats/day/{day?}`:
 
 ```json
 {
@@ -163,7 +167,7 @@ axios
 
 2- `GET: /api/stats/year/{year?}` // e.g `/api/stats/year/2024`
 
-### Success response for `/api/stats/year/{year?}`:
+##### Success response for `/api/stats/year/{year?}`:
 
 ```json
 {
@@ -189,7 +193,7 @@ axios
 
 3- `GET: /api/stats/month/{month?}`
 
-### Success response for `/api/stats/month/{month?}`:
+##### Success response for `/api/stats/month/{month?}`:
 
 ```json
 {
@@ -239,7 +243,7 @@ axios
 }
 ```
 
-### Success response for `/api/transactions/create`:
+##### Success response for `/api/transactions/create`:
 
 ```json
 {
@@ -261,7 +265,7 @@ axios
 
 2- `GET: /api/transactions`
 
-### Success response for `/api/transactions`:
+##### Success response for `/api/transactions`:
 
 ```json
 {
@@ -317,7 +321,7 @@ axios
 
 2- `GET: /api/transactions/{id}`
 
-### Success response for `/api/transactions/33`:
+##### Success response for `/api/transactions/33`:
 
 ```json
 	{
@@ -334,6 +338,7 @@ axios
         	"date": null,
         	"created_at": "2024-12-26T11:06:22.000000Z",
         	"updated_at": "2024-12-26T11:06:22.000000Z"
+        }
      }
 ```
 
@@ -359,7 +364,7 @@ axios
 }
 ```
 
-### Success response for `/api/transactions/update/1`:
+##### Success response for `/api/transactions/update/1`:
 
 ```json
 {
@@ -378,7 +383,7 @@ axios
 
 4- `DELETE: /api/transactions/delete/{id}`
 
-### Success response for `/api/transactions/delete/1`:
+##### Success response for `/api/transactions/delete/1`:
 
 ```json
 {
@@ -391,7 +396,7 @@ axios
 
 - get transactions by type (must be **only** `income` or `expense`)
 
-### Success response for /api/transactions/type/{type?}:
+##### Success response `/api/transactions/type/{type?}`:
 
 ```json
 {
@@ -449,7 +454,7 @@ axios
 
 - `date` param available values: ['today', 'week', 'month', 'year']
 
-### Success response for `/api/transactions/date/today`:
+##### Success response for `/api/transactions/date/today`:
 
 ```json
 {    "status": 200,
@@ -500,11 +505,11 @@ axios
    }
 ```
 
-7- `GET: /api/transactions/date/get/{date}` // e.g. /api/transactions/date/get/2024-12-10
+7- `GET: /api/transactions/date/get/{date}` // e.g. `/api/transactions/date/get/2024-12-10`
 
 - get transactions for sepicific date .
 
-### Success response for `GET: /api/transactions/date/get/{date}`:
+##### Success response for `GET: /api/transactions/date/get/{date}`:
 
 > like point number 6
 
@@ -514,7 +519,7 @@ axios
 
 1- `GET: /api/goals`
 
-### Success response for `GET: /api/goals`:
+##### Success response for `GET: /api/goals`:
 
 ```json
 {
@@ -577,7 +582,7 @@ axios
 
 2- `GET: /api/goals/{id}`
 
-### Success response for `GET: /api/goals/1`:
+##### Success response for `GET: /api/goals/1`:
 
 ```json
 {
@@ -627,7 +632,7 @@ axios
     }
 ```
 
-3- `PUT: /api/goals/update/{id}`
+4- `PUT: /api/goals/update/{id}`
 
 #### Request data expected:
 
@@ -657,7 +662,7 @@ axios
 
 4- `DELETE: /api/goals/delete/{id}`
 
-### Success response for `/api/goals/delete/1`:
+##### Success response for `/api/goals/delete/1`:
 
 ```json
 {
@@ -671,7 +676,7 @@ axios
 
 1- `GET: /api/profile`
 
-### Success response for `/api/profile/`
+##### Success response for `/api/profile/`
 
 ```json
 {
@@ -696,7 +701,7 @@ axios
     - new_password                (string, required)
     - new_password_confirmation   (string)
 
-### Success response for `/api/profile/reset-password`
+##### Success response for `/api/profile/reset-password`
 
 ```json
   {
@@ -708,7 +713,8 @@ axios
 
 3- `DELETE: /api/profile/deleteAccount`
 
-### Success response for `/api/profile/deleteAccount`
+##### Success response for `/api/profile/deleteAccount`
+
 ```json
   {
     "status": 200,
@@ -716,3 +722,8 @@ axios
     "data": "delete"
   }
 ```
+
+
+---
+FlushCode, All rights reserved 2024.
+Contact: flushcode.team@gmail.com
