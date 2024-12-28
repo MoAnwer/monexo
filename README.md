@@ -1,6 +1,5 @@
 # Monexo API doc 
 
----
 This Readme doc is explain how the back-end of the financial web app [Monexo](https://github.com/Mohayyad-Muawia/monexo) is work.
 # 📌 Global rules:
 
@@ -85,8 +84,6 @@ axios
 ---
 
 # ✳️ API endpoints 
-
----
 
 ### Login endpoint
 
