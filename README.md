@@ -429,7 +429,7 @@ axios
 
 ---
 
-### Goals :
+## Goals :
 
 1- `GET: /api/goals`
 
