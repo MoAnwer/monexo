@@ -633,7 +633,7 @@ axios
   {
     "status": 200,
     "message": "success",
-    "data": "delete"
+    "data": "account deleted successful"
   }
 ```
 
