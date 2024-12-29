@@ -5,7 +5,7 @@ This Readme doc is explain how the back-end of the financial web app [Monexo](ht
 
 ## How to send resquest ?
 
-after success login or new register actions api with generate `access_token` like :
+after success login or new register actions api will generate `access_token` like :
 
 ```json
 {
