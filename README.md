@@ -16,7 +16,7 @@ after success login or new register actions api will generate `access_token` lik
 
 try to save it in `localStorage` or `cookie` to use it with your requests, **every request** must be send with headers:
 
-- `Accept` : **only** must be `application/json`
+- `Accept` :  must be **only** `application/json`
 - `Authorization` : contains `Bearer <token>`
 
 > [!WARNING]  
