@@ -71,7 +71,7 @@ axios
 ```
 
 > [!NOTE] 
->  Every failed resonse will be like this.
+>  Every failed response will be like this.
 
 ### 3- if user is not logged , will return response:
 
